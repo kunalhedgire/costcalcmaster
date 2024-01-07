@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from .models import Item
-from .views import add_items, save_items, summary, show_add_items
+# from .views import add_items, save_items, summary, show_add_items
 
 
 class YourAppViewsTestCase(TestCase):

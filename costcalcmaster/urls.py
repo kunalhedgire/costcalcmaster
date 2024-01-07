@@ -19,18 +19,9 @@ from django.urls import path
 from cost_calculator.views import AddItemsView, SaveItemsView, SummaryView, ShowAddItemsView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('', add_items, name='add_items'),
-#     path('save-items/', save_items, name='save_items'),
-#     path('summary/', summary, name='summary'),
-#     path('show-add-items/', show_add_items, name='show_add_items'),
-# ]
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add-items/', AddItemsView.as_view(), name='add_items'),
+    path('', AddItemsView.as_view(), name='add_items'),
     path('save-items/', SaveItemsView.as_view(), name='save_items'),
     path('summary/', SummaryView.as_view(), name='summary'),
     path('show-add-items/', ShowAddItemsView.as_view(), name='show_add_items'),
