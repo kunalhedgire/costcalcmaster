@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Items</title>
+    <style>
+        body {
+            background-color: #FFFAF0;
+        }
+
+        table {
+            width: 50%; /* Adjust this width as needed */
+            margin: 0 auto;
+            background-color: white; /* Set the table background color */
+            border-collapse: collapse; /* Collapse table borders */
+        }
+
+        th, td {
+            border: 1px solid #dddddd; /* Add borders to cells */
+            padding: 8px;
+            text-align: left;
+        }
+
+        button {
+            background-color: lightcoral;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: coral;
+        }
+    </style>
+    <script>
+        function addRow() {
+            var table = document.getElementById("dynamic-table");
+            var newRow = table.insertRow();
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            cell1.innerHTML = '<input type="text" name="item[]">';
+            cell2.innerHTML = '<input type="text" name="price[]" onfocus="addRow()">';
+        }
+    </script>
+</head>
+<body>
+    <h2 style="text-align: center;">Add Items and Prices</h2>
+    <form method="post" action="{% url 'save_items' %}">
+        {% csrf_token %}
+        <table id="dynamic-table">
+            <tr>
+                <th>Item</th>
+                <th>Price (£)</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="item[]" ></td>
+                <td><input type="text" name="price[]" onfocus="addRow()"></td>
+            </tr>
+        </table>
+        <br>
+        <div style="text-align: center;">
+            <button type="submit">Summary</button>
+        </div>
+    </form>
+</body>
+</html>
